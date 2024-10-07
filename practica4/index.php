@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<?php
+
+    $bool;
+
+    if ($bool == null){
+
+        $bool == 1;
+        header("Location:./vista/vistaArticles.php");
+        
+    }
+
+
+?>
+
     <form action="./vista/vistaConsultar.php" method="get">
     <input type="submit" value="Consultar">
     </form>
@@ -27,6 +41,10 @@
     <form action="./vista/vistaArticles.php">
         <input type="submit" value="Mirar Articles">
     </form>
-   
+
+    <form action="./vista/vistaLogin.php">
+        <input type="submit" value="Logar-se">
+    </form>
+
 </body>
 </html>

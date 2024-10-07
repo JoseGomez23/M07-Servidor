@@ -6,8 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../estils/estilsArticles.css">
+
 </head>
 <body>
+<header>
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="#">MiLogo</a>
+    </div>
+    <ul class="navbar-links">
+        <li><a href="../vista/vistaInserir.php">Inserir</a></li>
+        <li><a href="../vista/vistaModificar.php">Modificar</a></li>
+        <li><a href="../vista/vistaConsultar.php">Consultar</a></li>
+        <li><a href="../vista/vistaEliminar.php">Eliminar</a></li>
+    </ul>
+    <div class="navbar-buttons">
+        <a href="../vista/vistaLogin.php" class="btn login-btn">Log In</a>
+        <a href="../vista/vistaRegistre.php" class="btn register-btn">Registrarse</a>
+    </div>
+</nav>
+</header>
+<main>
+</main>
+
     <h1>TOTS ELS ARTICLES</h1>
     <form method="get">
     <p>Articles per pagina<p>
