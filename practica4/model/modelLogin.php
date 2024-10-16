@@ -6,7 +6,6 @@ function verificarUsuari5($correu, $psswd){
 
     global $conex;
 
-    var_dump($conex);
     try{
 
         //Consulta per buscar l'usuari amb el nom que hem introduit
@@ -32,24 +31,47 @@ function decriptarPsswd($correu, $psswd) {
 
     global $conex;
     
-
     try{
     
-    $sql = "SELECT contrasenya FROM usuaris WHERE correu =:correu";
-    $stmt = $conex->prepare($sql);
+        $sql = "SELECT contrasenya FROM usuaris WHERE correu =:correu";
+        $stmt = $conex->prepare($sql);
 
-    $stmt->execute([":correu"=>$correu]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+        $stmt->execute([":correu"=>$correu]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
 
-    if($result &&  password_verify($psswd,$result['contrasenya'])){
-        echo "Logat";
-    }
+        if($result &&  password_verify($psswd,$result['contrasenya'])){
+            
+           començarSessio($correu);
+        } else {
+            echo "Contrasenya incorrecte";
+        }
 
     } catch (Exception $e){
 
     }
 
 
+}
+
+function començarSessio($correu){
+
+
+    global $conex;
+
+    $sql = "SELECT nomusuari FROM usuaris WHERE correu =:correu";
+    $stmt = $conex->prepare($sql);
+
+    
+    $stmt->execute([":correu"=>$correu]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    session_start();
+
+    
+    $_SESSION['usuari'] = $result['nomusuari'];
+    echo "Sessió iniciada com a: " .$result['nomusuari'];
+   
 }
 ?>

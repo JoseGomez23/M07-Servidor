@@ -110,8 +110,59 @@ function mostrarArticleDef($article, $totalPagines,$limitArticles) {
     
 }
 
+
+function mostrarArticlesModelUsuari($pagina,$limitArticles){
+
+    global $conex;
+    try {
+        
+        if($limitArticles != ""){
+            
+
+            // offset = a partir de quin article s'ha de mostrar
+            $offset = ($pagina - 1) * $limitArticles; //Exemple: (1-1) * 2 = comença per l'article 0
+            // Comptar articles 
+            $sqlCount = "SELECT COUNT(*) as total FROM articles";
+            $stmtCount = $conex->prepare($sqlCount);
+            $stmtCount->execute();
+            $resultat = $stmtCount->fetch(PDO::FETCH_ASSOC);
+            $totalArticles = $resultat['total'];
+
+            // Calcular pagines a mostrar
+            if($limitArticles != 0 ){
+                $totalPagines = ceil($totalArticles / $limitArticles); //ceil() arrodoneix cap a dalt
+
+                // Consulta que mostra els articles, limit es la quantitat mostrada i offset a partir de quin article s'ha de mostrar
+                $sql = "SELECT * FROM articles LIMIT :limit OFFSET :offset";
+                $stmt = $conex->prepare($sql);
+                $stmt->bindParam(':limit', $limitArticles, PDO::PARAM_INT);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                $stmt->execute();
+                $article = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                mostrarArticleDef($article,$totalPagines,$limitArticles);
+            } else {
+                echo "Introdueix un nombre valid";
+            
+            }
+        } else {
+            echo "Has d'introduir un numero";
+        }
+
+    
+    } catch (PDOException $e) {
+    
+        echo "Error al obtenir els articles: ";
+    } catch (Exception $e) {
+        
+        echo $e->getMessage();
+    }
+    
+}
+
+
 // Capturar el número de pàgina desde la URL, per defecte sera 1
 $pagina = isset($_GET["pagina"]) ? (int)$_GET["pagina"] : 1;
+
 
 
 
