@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form method="post">
     <h1>Formulari de registre</h1>
     <tr>Intodueix les dades
         <div>
@@ -26,6 +26,18 @@
         </div>
 
         <input type="submit" value="Registrar-se">
+
+        <?php
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && (!empty($_POST["nomusuari"]))) {
+            
+            require_once "../controlador/controladorRegistre.php";
+            comprovacions(); // Crida de la funcio
+
+        }
+
+        ?>
+        <input type="submit"  value="tornar">
 
         <p>Ja tens compte?:<a href="../vista/vistaLogin.php">Inicia sessió</a>
 

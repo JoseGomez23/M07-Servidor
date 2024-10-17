@@ -30,6 +30,8 @@ form {
 /* Input field styles */
 form input[type="number"], 
 form input[type="text"], 
+form input[type="mail"], 
+form input[type="password"],
 form textarea { /* Asegúrate de incluir textarea si lo usas */
     margin-top: 10px; /* Espacio entre los campos */
     padding: 12px;

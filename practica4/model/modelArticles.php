@@ -113,30 +113,35 @@ function mostrarArticleDef($article, $totalPagines,$limitArticles) {
 
 function mostrarArticlesModelUsuari($pagina,$limitArticles){
 
+
     global $conex;
     try {
         
         if($limitArticles != ""){
+            $correu = $_SESSION['correu'];
             
-
             // offset = a partir de quin article s'ha de mostrar
             $offset = ($pagina - 1) * $limitArticles; //Exemple: (1-1) * 2 = comença per l'article 0
             // Comptar articles 
-            $sqlCount = "SELECT COUNT(*) as total FROM articles";
+            $sqlCount = "SELECT COUNT(*) as total FROM articles WHERE correu = :correu";
             $stmtCount = $conex->prepare($sqlCount);
-            $stmtCount->execute();
+            $stmtCount->execute([":correu"=>$correu]);
             $resultat = $stmtCount->fetch(PDO::FETCH_ASSOC);
             $totalArticles = $resultat['total'];
+
+            
+           
 
             // Calcular pagines a mostrar
             if($limitArticles != 0 ){
                 $totalPagines = ceil($totalArticles / $limitArticles); //ceil() arrodoneix cap a dalt
 
                 // Consulta que mostra els articles, limit es la quantitat mostrada i offset a partir de quin article s'ha de mostrar
-                $sql = "SELECT * FROM articles LIMIT :limit OFFSET :offset";
+                $sql = "SELECT * FROM articles WHERE correu=:correu LIMIT :limit OFFSET :offset";
                 $stmt = $conex->prepare($sql);
                 $stmt->bindParam(':limit', $limitArticles, PDO::PARAM_INT);
                 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                $stmt->bindParam(':correu', $correu, PDO::PARAM_STR);
                 $stmt->execute();
                 $article = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 mostrarArticleDef($article,$totalPagines,$limitArticles);

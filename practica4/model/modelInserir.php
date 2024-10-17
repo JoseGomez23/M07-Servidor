@@ -30,14 +30,15 @@ function insertarBD($titol, $cos) {
     global $conex;
 
     try {
-        //Insertara l'article a la bd
 
+        //Insertara l'article a la bd
+        $correu = $_SESSION['correu'];
         //Preparar i executar consulta
-        $sql = "INSERT INTO articles (titol, cos) VALUES (:titol, :cos)";
+        $sql = "INSERT INTO articles (titol, cos, correu) VALUES (:titol, :cos, :correu)";
         $stmt = $conex->prepare($sql);
 
         
-        $stmt->execute([":titol" => $titol,":cos" => $cos]);
+        $stmt->execute([":titol" => $titol,":cos" => $cos,":correu"=>$correu]);
 
         
         if ($stmt->rowCount() > 0) {

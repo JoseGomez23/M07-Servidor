@@ -66,12 +66,17 @@ function començarSessio($correu){
     $stmt->execute([":correu"=>$correu]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    ini_set('session.gc_maxlifetime', 20); 
+    session_set_cookie_params(20);  
 
     session_start();
 
     
     $_SESSION['usuari'] = $result['nomusuari'];
+    $_SESSION['correu'] = $correu;
     echo "Sessió iniciada com a: " .$result['nomusuari'];
-   
+
+    header("Location: ../vista/vistaUsuariArticles.php");
+    exit();
 }
 ?>

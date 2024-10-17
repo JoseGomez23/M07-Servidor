@@ -1,3 +1,18 @@
+<?php
+ini_set('session.gc_maxlifetime', 20); 
+session_set_cookie_params(20); 
+
+session_start();
+if(isset($_SESSION['usuari'])){
+    header("Location: ./vista/vistaUsuariArticles.php");
+} else {
+    header("Location: ./vista/vistaArticles.php");
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +23,7 @@
 </head>
 <body>
 
-<?php
 
-    $bool;
-
-    if ($bool == null){
-
-        $bool == 1;
-        header("Location:./vista/vistaArticles.php");
-        
-    }
-
-
-?>
 
     <form action="./vista/vistaConsultar.php" method="get">
     <input type="submit" value="Consultar">

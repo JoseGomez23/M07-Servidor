@@ -24,7 +24,7 @@
             <br>
         
             <td>Cos de l'article</td>
-            <textarea id="cosmodificar" name="cosmodificar" placeholder="Introdueix el cos de l'article..." required value="<?php echo $_POST["cosmodificar"] ?? '' ?>"></textarea>
+            <textarea id="cosmodificar" name="cosmodificar" placeholder="Introdueix el cos de l'article..." value="<?php echo $_POST["cosmodificar"] ?? '' ?>"></textarea>
             <input type="submit" value="Modificar">
         </tr>
 

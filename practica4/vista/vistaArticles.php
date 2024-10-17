@@ -15,10 +15,7 @@
         <a href="#">MiLogo</a>
     </div>
     <ul class="navbar-links">
-        <li><a href="../vista/vistaInserir.php">Inserir</a></li>
-        <li><a href="../vista/vistaModificar.php">Modificar</a></li>
-        <li><a href="../vista/vistaConsultar.php">Consultar</a></li>
-        <li><a href="../vista/vistaEliminar.php">Eliminar</a></li>
+       
     </ul>
     <div class="navbar-buttons">
         <a href="../vista/vistaLogin.php" class="btn login-btn">Log In</a>
@@ -28,6 +25,13 @@
 </header>
 <main>
 </main>
+ 
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
     <h1>TOTS ELS ARTICLES</h1>
     <form method="get">
