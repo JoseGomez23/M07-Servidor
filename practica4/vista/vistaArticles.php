@@ -36,7 +36,7 @@
     <h1>TOTS ELS ARTICLES</h1>
     <form method="get">
     <p>Articles per pagina<p>
-    <input type="number" name="articlesperpag" value="<?php echo $_POST["articlesperpag"] ?? $_GET["articlesperpag"] ?? '2'; ?>">
+    <input type="number" name="articlesperpag" value="<?php echo $_POST["articlesperpag"] ?? $_GET["articlesperpag"] ?? $_COOKIE['articlespag']; ?>">
     <input type="submit" value="Executar">
     </form>
     <?php

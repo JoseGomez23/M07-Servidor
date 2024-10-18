@@ -9,8 +9,15 @@ function comprovacions(){
     $psswd2 = $_POST["pswd2"];
     $correu = $_POST["email"];
 
-    verificarUsuari($correu, $psswd1, $psswd2, $nomusuari);
+    $regexp = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/";
 
+    if(preg_match($regexp,$psswd1)){
+
+        verificarUsuari($correu, $psswd1, $psswd2, $nomusuari);
+
+    } else {
+        echo "Contrasenya poc consistent";
+    }
 }
 
 ?>

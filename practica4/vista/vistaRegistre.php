@@ -12,7 +12,7 @@
     <tr>Intodueix les dades
         <div>
             <p>Nom d'usuari</p>
-            <input type="text" name="nomusuari">
+            <input type="text" name="nomusuari" value="<?php echo $_POST["nomusuari"] ?? '' ?>">
             <br>
             <p>Contrasenya</p>
             <input type="password" name="pswd1">
@@ -21,7 +21,7 @@
             <input type="password" name="pswd2">
             <br>
             <p>Correu electronic</p>
-            <input type="email" name="email">
+            <input type="email" name="email" value="<?php echo $_POST["email"] ?? '' ?>">
             
         </div>
 
@@ -37,15 +37,13 @@
         }
 
         ?>
-        <input type="submit"  value="tornar">
-
         <p>Ja tens compte?:<a href="../vista/vistaLogin.php">Inicia sessió</a>
-
-
     </tr>
-
     </form>
 
+    <form action="../index.php">
+    <input type="submit"  value="tornar">
+    </form>
     
 </body>
 </html>

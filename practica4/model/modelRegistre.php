@@ -6,7 +6,6 @@ function verificarUsuari($correu, $psswd, $psswd2, $nomusuari){
 
     global $conex;
 
-    var_dump($conex);
     try{
 
         //Consulta per buscar l'usuari amb el nom que hem introduit
@@ -34,31 +33,29 @@ function insertarUsuari($correu, $psswd1, $psswd2, $nomusuari){
     global $conex;
 
     try {
+       
 
-        if($psswd1 == $psswd2){
-            $psswd1 = password_hash($psswd1, PASSWORD_BCRYPT);
+            if($psswd1 == $psswd2){
+                $psswd1 = password_hash($psswd1, PASSWORD_BCRYPT);
 
-            $sql = "INSERT INTO usuaris (correu, nomusuari, contrasenya) VALUES (:correu, :nomusuari, :contrasenya)";
-            $stmt = $conex->prepare($sql);
-            $stmt->execute([":correu"=>$correu , ":nomusuari"=>$nomusuari, ":contrasenya"=>$psswd1]);
+                $sql = "INSERT INTO usuaris (correu, nomusuari, contrasenya) VALUES (:correu, :nomusuari, :contrasenya)";
+                $stmt = $conex->prepare($sql);
+                $stmt->execute([":correu"=>$correu , ":nomusuari"=>$nomusuari, ":contrasenya"=>$psswd1]);
 
-            $boolean = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $boolean = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            if(!$boolean){
-                echo "Inserit correctament";
+                if(!$boolean){
+                    echo "Registrat correctament";
+                } else {
+                    echo "No s'ha pogut registrar";
+                }
+
             } else {
-                echo "No s'ha pogut inserir";
+
+                echo "Les contrasenyes no coincideixen";
             }
 
-        } else {
-
-            echo "Les contrasenyes no coincideixen";
-        }
-
-
-
-
-    } catch (Exception $e){
+        } catch (Exception $e){
 
     }
 

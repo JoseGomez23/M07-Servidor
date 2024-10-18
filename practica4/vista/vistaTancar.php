@@ -25,5 +25,9 @@
         <input type="submit" value="Tornar">
 
     </form>
+    <form action="../vista/vistaCanviarPswd.php">
+        <input type="submit" value="Cambiar contrasenya">
+
+    </form>
 </body>
 </html>
