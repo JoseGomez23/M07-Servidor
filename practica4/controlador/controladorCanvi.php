@@ -15,6 +15,8 @@ function canviContrasenya(){
         require_once "../model/modelCanvi.php";
         verificarCanvi($psswd,$psswdnova,$psswdnovaconf);
 
+    } else {
+        echo "No hi ha cap sessió en actiu";
     }
 
 }

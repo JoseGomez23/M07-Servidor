@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <!--Jose Gomez-->
+<?php 
+ini_set('session.gc_maxlifetime', 40*60); 
+session_start();
+
+if (isset($_SESSION['usuari'])) {
+    
+} else {
+    header("Location: ../index.php");
+}
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,8 +25,6 @@
     <div class="navbar-logo">
         <a href="#">Benvingut, <?php
         
-ini_set('session.gc_maxlifetime', 40*60); 
-session_start();
 if (isset($_SESSION['usuari'])) {
     echo  htmlspecialchars($_SESSION['usuari']);
 } else {

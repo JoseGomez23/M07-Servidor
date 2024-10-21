@@ -4,8 +4,7 @@
 
 function verificarEliminar($titol){
     
-    ini_set('session.gc_maxlifetime', 40*60); 
-    session_start();
+    
     global $conex;
     $correu = $_SESSION['correu'];
     try {

@@ -27,12 +27,14 @@ function verificarUsuari5($correu, $psswd){
 
 }
 
+//Funcio per comparar la contrasenya introduida amb la guardada
 function decriptarPsswd($correu, $psswd) {
 
     global $conex;
     
     try{
-    
+
+        //Obtenir contrasenya de la base de de dades
         $sql = "SELECT contrasenya FROM usuaris WHERE correu =:correu";
         $stmt = $conex->prepare($sql);
 
@@ -40,6 +42,7 @@ function decriptarPsswd($correu, $psswd) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
 
+        //Verificar coincidencia contrasenyes
         if($result &&  password_verify($psswd,$result['contrasenya'])){
             
            començarSessio($correu);
@@ -54,11 +57,12 @@ function decriptarPsswd($correu, $psswd) {
 
 }
 
+//Funcio per iniciar sessio 
 function començarSessio($correu){
-
 
     global $conex;
 
+    try {
     $sql = "SELECT nomusuari FROM usuaris WHERE correu =:correu";
     $stmt = $conex->prepare($sql);
 
@@ -77,5 +81,9 @@ function començarSessio($correu){
 
     header("Location: ../vista/vistaUsuariArticles.php");
     exit();
+    } catch (Exception $e){
+        echo $e->getMessage();
+    }
+
 }
 ?>

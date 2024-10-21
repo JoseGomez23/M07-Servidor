@@ -1,7 +1,7 @@
 <?php
 //Jose Gomez
 
-require_once "../conexio.php";  // Asegúrate de usar require_once para evitar múltiples inclusiones
+require_once "../conexio.php";
 
 function verificarArticles(){
 
@@ -182,7 +182,7 @@ function mostrarArticlesModelUsuari($pagina,$limitArticles){
 }
 
 
-// Capturar el número de pàgina desde la URL, per defecte sera 1
+// Agafar el número de pàgina desde la URL, per defecte sera 1
 $pagina = isset($_GET["pagina"]) ? (int)$_GET["pagina"] : 1;
 
 

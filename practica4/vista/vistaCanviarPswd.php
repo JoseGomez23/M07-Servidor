@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Jose Gómez-->
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../estils/pruebas.css">
@@ -21,6 +22,7 @@
             <input type="submit" value="Canviar contrasenya">
             <?php
 
+                //Resposta del servidor al click de canviar contrasenya
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     require_once "../controlador/controladorCanvi.php";

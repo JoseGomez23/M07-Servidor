@@ -1,5 +1,6 @@
 <?php
 
+//JOSE GOMEZ
 
 
 function verificarCanvi($psswd,$psswdnova,$psswdnovaconf){
@@ -8,8 +9,8 @@ function verificarCanvi($psswd,$psswdnova,$psswdnovaconf){
     
     try{
 
+
         $correu = $_SESSION['correu'];
-        var_dump($correu);
         //Consulta per buscar l'usuari amb el nom que hem introduit
         $sql = "SELECT * FROM usuaris WHERE correu =:correu";
         $stmt = $conex->prepare($sql);
@@ -29,10 +30,12 @@ function verificarCanvi($psswd,$psswdnova,$psswdnovaconf){
 
 }
 
+//Funcio per comprovar la contrasenya actual de l'usuari i canviar-li la contrasenya en cas de que tot sigui correcte
 function comprovarPswdActual($correu,$psswd,$psswdnova,$psswdnovaconf){
 
     global $conex;
 
+    //Select per trobar la contrasenya encriptada
     $sql = "SELECT contrasenya FROM usuaris WHERE correu =:correu";
     
     $stmt = $conex->prepare($sql);
@@ -40,6 +43,7 @@ function comprovarPswdActual($correu,$psswd,$psswdnova,$psswdnovaconf){
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    //Expressio regular per poder crear una contrasenya segura
     $regexp = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/";
 
     if(preg_match($psswdnova,$regexp)){
@@ -69,8 +73,5 @@ function comprovarPswdActual($correu,$psswd,$psswdnova,$psswdnovaconf){
     }
 }
 
-function canviarPswd(){
-
-}
 
 ?>

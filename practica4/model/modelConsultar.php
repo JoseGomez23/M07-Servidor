@@ -1,5 +1,5 @@
 <?php
-//JOSE
+//JOSE GOMEZ
 
 function verificarConsultar($titolarticle){
 

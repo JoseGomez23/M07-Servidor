@@ -4,8 +4,7 @@
 
 require_once "../conexio.php";
 
-ini_set('session.gc_maxlifetime', 40*60); 
-session_start();
+
 function verificarModificar($titol,$cos,$titolnou){
 
     global $conex;

@@ -57,6 +57,8 @@ function insertarUsuari($correu, $psswd1, $psswd2, $nomusuari){
 
         } catch (Exception $e){
 
+            echo $e->getMessage();
+
     }
 
 }
