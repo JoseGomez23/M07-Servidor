@@ -2,6 +2,8 @@
 
 require_once "../conexio.php";
 function canviContrasenya(){
+
+    ini_set('session.gc_maxlifetime', 40*60); 
     session_start();
 
     if(isset($_SESSION['usuari'])){

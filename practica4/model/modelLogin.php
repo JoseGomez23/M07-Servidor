@@ -66,9 +66,8 @@ function començarSessio($correu){
     $stmt->execute([":correu"=>$correu]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    ini_set('session.gc_maxlifetime', 20); 
-    session_set_cookie_params(20);  
-
+    ini_set('session.gc_maxlifetime', 40*60); 
+ 
     session_start();
 
     

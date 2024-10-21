@@ -3,6 +3,8 @@
 //Verificador que comprova si l'element cercat existeix a la BD
 
 function verificarEliminar($titol){
+    
+    ini_set('session.gc_maxlifetime', 40*60); 
     session_start();
     global $conex;
     $correu = $_SESSION['correu'];

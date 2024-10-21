@@ -75,12 +75,29 @@ function mostrarArticlesModel($pagina = 1, $limitArticles){
 function mostrarArticleDef($article, $totalPagines,$limitArticles) {
 
     // Mostrar articles paginats
-    foreach ($article as $article) {
-        echo "<div>";
-        echo "Títol: " . htmlspecialchars($article['titol']) . "<br>";
-        echo "Cos: " . htmlspecialchars($article['cos']) . "<br>";
-        echo "</div>";
-        echo "-------------------------------------------------------------<br>";
+
+    if(isset($_SESSION['correu'])){
+
+        foreach ($article as $article) {
+            echo "<div>";
+            echo "Títol: " . htmlspecialchars($article['titol']) . "<br>";
+            echo "Cos: " . htmlspecialchars($article['cos']) . "<br>";
+            echo "<a href=\"../vista/vistaModificar.php\">✏️</a>";
+            echo "<a href=\"../vista/vistaEliminar.php\">🗑️</a>";
+            echo "</div>";
+            echo "-------------------------------------------------------------<br>";
+        }
+ 
+    } else {
+
+        foreach ($article as $article) {
+            echo "<div>";
+            echo "Títol: " . htmlspecialchars($article['titol']) . "<br>";
+            echo "Cos: " . htmlspecialchars($article['cos']) . "<br>";
+        
+            echo "</div>";
+            echo "-------------------------------------------------------------<br>";
+        }
     }
 
     // Mostrar paginacio

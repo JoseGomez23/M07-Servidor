@@ -8,6 +8,7 @@ function inserirArrticle(){
 
     global $conex;
 
+    ini_set('session.gc_maxlifetime', 40*60); 
     session_start();
     if(isset($_SESSION['usuari'])){
        

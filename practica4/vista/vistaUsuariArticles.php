@@ -13,7 +13,8 @@
 <nav class="navbar">
     <div class="navbar-logo">
         <a href="#">Benvingut, <?php
-
+        
+ini_set('session.gc_maxlifetime', 40*60); 
 session_start();
 if (isset($_SESSION['usuari'])) {
     echo  htmlspecialchars($_SESSION['usuari']);
