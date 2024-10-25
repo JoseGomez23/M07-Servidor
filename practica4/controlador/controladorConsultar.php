@@ -5,6 +5,9 @@ require "../conexio.php";
 //Funcio que controla l'execucio de la funcio consultar
 function consultarArticle(){
     global $conex;
+
+    ini_set('session.gc_maxlifetime', 40*60); 
+    session_start();
     
     $titolarticle = $_POST["titol"];
 try {

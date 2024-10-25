@@ -58,7 +58,7 @@ if (isset($_SESSION['usuari'])) {
     
     <form method="get">
     <p>Articles per pagina<p>
-    <input type="number" name="articlesperpag" value="<?php echo $_POST["articlesperpag"] ?? $_GET["articlesperpag"] ?? $_COOKIE['articlespag']; ?>">
+    <input type="number" name="articlesperpag" value="<?php echo $_POST["articlesperpag"] ?? $_GET["articlesperpag"] ?? $_COOKIE['articlespag'] ?? '2'; ?>">
     <input type="submit" value="Executar">
     </form>
     <?php
@@ -71,9 +71,7 @@ if (isset($_SESSION['usuari'])) {
     
         }
     ?>
-    <form method="post" action="../index.php">
-        <input type="submit" value="Tornar">
-    </form>
+
     
 </body>
 </html>
